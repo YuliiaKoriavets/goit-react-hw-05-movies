@@ -1,9 +1,10 @@
-import { Link } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getTrendingMovies } from 'services/api';
 
 export default function Home() {
   const [trendingMovies, setTrendingMovies] = useState();
+  const location = useLocation()
 
   useEffect(() => {
     getTrendingMovies().then(response =>
@@ -20,7 +21,7 @@ export default function Home() {
         {trendingMovies &&
           trendingMovies.map(({ id, title }) => (
             <li key={id}>
-              <Link>{title}</Link>
+              <Link to={`/movies/${id}`} state={{from: location}}>{title}</Link>
             </li>
           ))}
       </ul>
