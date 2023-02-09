@@ -12,8 +12,6 @@ export default function Home() {
     );
   }, []);
 
-  // getTrendingMovies().then(response => console.log(response.data.results))
-
   return (
     <section>
       <h2>Trending today</h2>
